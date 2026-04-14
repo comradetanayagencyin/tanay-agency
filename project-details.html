@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Tanay Agency</title>
+    <link rel="stylesheet" href="styles-light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1><a href="index.html">Tanay Agency</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Our Work</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <span class="theme-toggle-icon" id="themeIcon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Large Banner -->
+    <section class="project-hero">
+        <div class="project-hero-image" id="projectHeroImage">
+            <div class="project-hero-overlay">
+                <div class="container">
+                    <span class="project-category-tag" id="projectCategoryTag">Category</span>
+                    <h1 class="project-hero-title" id="projectHeroTitle">Project Title</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Content -->
+    <section class="project-details-section">
+        <div class="container">
+            <!-- Back Button & Breadcrumb -->
+            <div class="page-navigation">
+                <button class="back-btn" id="backBtn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Projects</span>
+                </button>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="index.html#portfolio">Our Work</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span id="breadcrumbCurrent">Project Details</span>
+                </div>
+            </div>
+
+            <div class="project-details-content" id="projectDetails">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-modal-content">
+            <span class="gallery-modal-close" id="galleryModalClose">&times;</span>
+            <img class="gallery-modal-image" id="galleryModalImage" src="" alt="Project Image">
+            <div class="gallery-modal-nav">
+                <button class="gallery-nav-btn" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav-btn" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="details.js"></script>
+</body>
+</html>

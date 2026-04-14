@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanay Agency - Digital Experiences That Drive Results</title>
+    <link rel="stylesheet" href="styles-light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Tanay Agency</h2>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1>Tanay Agency</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#portfolio" class="nav-link">Our Work</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <span class="theme-toggle-icon" id="themeIcon">🌙</span>
+                    </button>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Building Digital Experiences That Drive Results</h1>
+                <p class="hero-subtitle">We combine innovation, strategy, and cutting-edge technology to transform your vision into powerful digital solutions.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('contact')">Start Your Project</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('portfolio')">View Our Work</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-tilt>
+                    <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item" data-tilt>
+                    <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                    <div class="stat-number" data-target="80">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item" data-tilt>
+                    <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-item" data-tilt>
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive digital solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded dynamically from localStorage -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-subtitle">Showcasing our latest and greatest projects</p>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Applications</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="iot">IoT</button>
+                <button class="filter-btn" data-filter="saas">SaaS</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="fintech">FinTech</button>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Section (Hidden by default) -->
+    <section id="admin" class="admin-section" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Add New Project</h2>
+                <p class="section-subtitle">Admin Panel - Add projects to portfolio</p>
+            </div>
+            <form id="addProjectForm" class="admin-form">
+                <div class="form-group">
+                    <label for="projectTitle">Project Title</label>
+                    <input type="text" id="projectTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectCategory">Category</label>
+                    <select id="projectCategory" required>
+                        <option value="web">Web Applications</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="iot">IoT</option>
+                        <option value="saas">SaaS</option>
+                        <option value="mobile">Mobile Apps</option>
+                        <option value="fintech">FinTech</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="projectImage">Image URL</label>
+                    <input type="url" id="projectImage" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Project</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Real feedback from satisfied clients</p>
+            </div>
+            <div class="testimonial-carousel">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Tanay Agency transformed our online presence completely. Their team delivered beyond our expectations with incredible attention to detail."</p>
+                        <div class="testimonial-author">
+                            <h4>Sarah Johnson</h4>
+                            <span>CEO, TechStart Inc.</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Working with Tanay Agency was a game-changer for our business. They understood our vision and brought it to life perfectly."</p>
+                        <div class="testimonial-author">
+                            <h4>Michael Chen</h4>
+                            <span>Founder, InnovateLab</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Exceptional quality and professionalism. Our mobile app exceeded all expectations and our users love it!"</p>
+                        <div class="testimonial-author">
+                            <h4>Emily Rodriguez</h4>
+                            <span>Product Manager, AppVenture</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"The UI/UX design work was outstanding. Our conversion rates increased by 150% after the redesign."</p>
+                        <div class="testimonial-author">
+                            <h4>David Park</h4>
+                            <span>Marketing Director, GrowthCo</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"From concept to launch, Tanay Agency provided exceptional service. Highly recommend their web development team!"</p>
+                        <div class="testimonial-author">
+                            <h4>Lisa Thompson</h4>
+                            <span>CTO, DigitalFirst</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Start Your Project</h2>
+                <p class="section-subtitle">Tell us about your project and we'll get back to you within 24 hours</p>
+            </div>
+            <form id="contactForm" class="contact-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactName">Full Name *</label>
+                        <input type="text" id="contactName" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email *</label>
+                        <input type="email" id="contactEmail" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactPhone">Phone Number *</label>
+                        <input type="tel" id="contactPhone" required>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactCompany">Company Name</label>
+                        <input type="text" id="contactCompany">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactSubject">Subject *</label>
+                        <input type="text" id="contactSubject" required>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactAddress">Address</label>
+                        <input type="text" id="contactAddress">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message *</label>
+                    <textarea id="contactMessage" rows="5" required></textarea>
+                    <span class="error-message" id="messageError"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large" id="submitBtn">Send Message</button>
+            </form>
+            <div class="success-message" id="successMessage" style="display: none;">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get In Touch Section -->
+    <section class="get-in-touch">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Digital Presence?</h2>
+                <p>Let's collaborate and build something extraordinary together.</p>
+                <button class="btn btn-primary btn-large" onclick="scrollToSection('contact')">Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Tanay Agency</h3>
+                    <p>Building digital experiences that drive results since 2016.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>SERVICES</h4>
+                    <ul>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">Mobile Apps</a></li>
+                        <li><a href="#services">Cloud Solutions</a></li>
+                        <li><a href="#services">UI/UX Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>COMPANY</h4>
+                    <ul>
+                        <li><a href="#home">About Us</a></li>
+                        <li><a href="#portfolio">Our Work</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> tanay.agency.in@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 9561209834</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tanay Agency. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating Back Button (for internal pages) -->
+    <button class="floating-back-btn" id="floatingBackBtn" style="display: none;" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
